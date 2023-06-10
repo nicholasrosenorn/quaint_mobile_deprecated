@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "quaint_mobile_1",
+    "slug": "quaint_mobile_1"
+  }
+}
