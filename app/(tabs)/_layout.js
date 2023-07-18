@@ -42,8 +42,10 @@ export default () => {
         )}>
             <Tabs.Screen name="home" />
             <Tabs.Screen name="journeys" />
+            <Tabs.Screen name="profile" />
             <Tabs.Screen name="feed" options={{href: null}}/>
             <Tabs.Screen name="foryou" options={{href: null}}/>
+
 
 
         </Tabs>

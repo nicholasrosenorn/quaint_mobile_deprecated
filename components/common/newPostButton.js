@@ -25,7 +25,7 @@ const NewPostButton = () => {
 			}}
 			onPress={() => {router.push("/post")}}
 		>
-			<Ionicons name="add-outline" size="32" color="white" />
+			<Ionicons name="add-outline" size={32} color="white" />
 		</TouchableOpacity>
 	)
 }
