@@ -16,15 +16,20 @@ export default Post;*/
 
 import React from "react";
 import { useState } from "react";
-import { Text, View, Platform, KeyboardAvoidingView, SafeAreaView, ScrollView, Pressable } from "react-native";
+import { Text, View, Platform, KeyboardAvoidingView, SafeAreaView, ScrollView, Pressable, Button, TextInput, TouchableOpacity } from "react-native";
 import {actions, RichEditor, RichToolbar} from "react-native-pell-rich-editor";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { Link, Stack, useRouter } from 'expo-router';
 
+import TitleInput from "../components/post/title/titleInput";
+import BodyInput from "../components/post/body/bodyInput";
+import { COLORS, FONT } from "../constants";
+import ToolBar from "../components/post/toolbar/toolBar";
 
-const handleHead = ({tintColor}) => <Text style={{color: tintColor}}>H1</Text>
 const Post = () => {
 
   const richText = React.useRef();
+  const router = useRouter();
 
   const [descHTML, setDescHTML] = useState("");
   const [showDescError, setShowDescError] = useState(false);
@@ -47,34 +52,29 @@ const Post = () => {
 
     if (replaceWhiteSpace.length <= 0) {
       setShowDescError(true);
+      alert("Please enter content for your post")
     } else {
-      // send data to your server!
+      // send data to server and navigate to home page
+      router.push("/postOptions")
     }
   };
 
 	return (
-    <SafeAreaView style={{flex: 1}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
+      <Stack.Screen 
+        options={{
+          headerTitle: "", 
+          headerRight: () => <TouchableOpacity onPress={submitContentHandle}><Text style={{color: COLORS.primary, fontFamily:FONT.regular, fontSize:17}}>Continue</Text></TouchableOpacity> /*<Button onPress={submitContentHandle} title="Save" style={{color: COLORS.primary}}/>*/,
+          headerTintColor: COLORS.primary,
+        }}
+      />
       <ScrollView keyboardDismissMode='on-drag'>
         <KeyboardAwareScrollView behavior={Platform.OS === "ios" ? "padding" : "height"}>
-          {/*<Pressable onPress={() => richText.current?.dismissKeyboard()}>
-            <Text>Rich Text Editor:</Text>
-          </Pressable>*/}
-          <RichEditor ref={richText} initialHeight={1000} style = {{height: 100}} placeholder="Begin by writing your story here"/>
-          {/*<RichEditor
-              ref={richText}
-              onChange={ descriptionText => {
-                  console.log("descriptionText:", descriptionText);
-              }}
-          />*/}
+          <TitleInput richTextHandleProp={richTextHandle}/>
+          <BodyInput richTextProp={richText} richTextHandleProp={richTextHandle}/>
         </KeyboardAwareScrollView>
       </ScrollView>
-      <KeyboardAvoidingView behavior={'position'} enabled keyboardVerticalOffset={90}>
-        <RichToolbar
-          editor={richText}
-          //actions={[ actions.insertImage, actions.setBold, actions.setItalic, actions.setUnderline, actions.heading1 ]}
-          iconMap={{ [actions.heading1]: handleHead }}
-        />
-      </KeyboardAvoidingView>
+      <ToolBar richTextProp={richText}/>
     </SafeAreaView>
   );
 };
