@@ -41,6 +41,7 @@ const StackLayout = () => {
                     headerTitle: "",
                 }}
                 />
+                <Stack.Screen name="post" options={{headerTitle: ""}}/>
         </Stack>
     )
 }
