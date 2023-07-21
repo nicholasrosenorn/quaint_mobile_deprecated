@@ -1,9 +1,13 @@
 import { Stack, useRouter } from "expo-router";
 import { SafeAreaView, Text, Button, TouchableOpacity, View, FlatList } from "react-native";
+import { useState } from 'react'
+
 import { COLORS, FONT } from "../constants";
+import Tag from "../components/common/tags/tag";
 
 const PostOptions = () => {
 	const router = useRouter();
+	const [activeTags, setActiveTags] = useState([]);
   return (
 	<SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
 		<Stack.Screen 
@@ -23,19 +27,20 @@ const PostOptions = () => {
 			<Text>Add tags</Text>
 			<FlatList
         data={[
-          {key: 'Minimalist Fashion'},
-          {key: 'Mindful Eating'},
-          {key: 'Minimalist Interior Design'},
-          {key: 'Digital Minimalism'},
-          {key: 'Minimalist Travel'},
-          {key: 'Minimalist Parenting'},
-          {key: 'Minimalist Recipes'},
-          {key: 'Minimalist Art'},
+          {id:1, tag: 'Minimalist Fashion'},
+          {id:2, tag: 'Mindful Eating'},
+          {id:3, tag: 'Minimalist Interior Design'},
+          {id:4, tag: 'Digital Minimalism'},
+          {id:5, tag: 'Minimalist Travel'},
+          {id:6, tag: 'Minimalist Parenting'},
+          {id:7, tag: 'Minimalist Recipes'},
+          {id:8, tag: 'Minimalist Art'},
         ]}
-        renderItem={({item}) => <Text>{item.key}</Text>}
+        renderItem={({item}) => <Tag name={item.tag} />}
 		/>
 		</View>
 		<Text>Post Options Page</Text>
+		<Text>{activeTags}</Text>
 	</SafeAreaView>
   ) 
 }
