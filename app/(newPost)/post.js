@@ -21,10 +21,10 @@ import {actions, RichEditor, RichToolbar} from "react-native-pell-rich-editor";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import { Link, Stack, useRouter } from 'expo-router';
 
-import TitleInput from "../components/post/title/titleInput";
-import BodyInput from "../components/post/body/bodyInput";
-import { COLORS, FONT } from "../constants";
-import ToolBar from "../components/post/toolbar/toolBar";
+import TitleInput from "../../components/post/title/titleInput";
+import BodyInput from "../../components/post/body/bodyInput";
+import { COLORS, FONT } from "../../constants";
+import ToolBar from "../../components/post/toolbar/toolBar";
 
 const Post = () => {
 
