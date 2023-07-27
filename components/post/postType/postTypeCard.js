@@ -11,19 +11,19 @@ const PostTypeCard = () => {
 					<Text style={styles.headerText}>What type of content are you posting?</Text>
 				</View>
 				<View style={styles.cardContainer}>
-					<TouchableOpacity style={styles.touchableType} onPress={() => router.push("/(newPost)/post")}>
+					<TouchableOpacity style={styles.touchableType} onPress={() => router.push("/(newPost)/blog")}>
 						<View style={styles.postTypeContainer}>
 							<Text style={styles.postTypeText}>Blog</Text>
 							<Text style={styles.postTypeDesc}>Share longer stories, advice, and posts</Text>
 						</View>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.touchableType}>
+					<TouchableOpacity style={styles.touchableType} onPress={() => router.push("/(newPost)/discussion")}>
 						<View style={styles.postTypeContainer}>
 							<Text style={styles.postTypeText}>Discussion</Text>
 							<Text style={styles.postTypeDesc}>Ask the Quaint community your questions</Text>
 						</View>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.touchableType}>
+					<TouchableOpacity style={styles.touchableType} onPress={() => router.push("/(newPost)/photo")}>
 						<View style={styles.postTypeContainer}>	
 							<Text style={styles.postTypeText}>Photo</Text>
 							<Text style={styles.postTypeDesc}>Showcase the great minimal photos and art you create</Text>

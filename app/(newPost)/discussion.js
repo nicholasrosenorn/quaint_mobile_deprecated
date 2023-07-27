@@ -26,7 +26,7 @@ import BodyInput from "../../components/post/body/bodyInput";
 import { COLORS, FONT } from "../../constants";
 import ToolBar from "../../components/post/toolbar/toolBar";
 
-const Post = () => {
+const Discussion = () => {
 
   const richText = React.useRef();
   const router = useRouter();
@@ -52,7 +52,9 @@ const Post = () => {
 
     if (replaceWhiteSpace.length <= 0) {
       setShowDescError(true);
-      alert("Please enter content for your post")
+      //alert("Please enter content for your post")
+      // FIX THIS
+      router.push("/postOptions")
     } else {
       // send data to server and navigate to home page
       router.push("/postOptions")
@@ -80,4 +82,4 @@ const Post = () => {
 };
 
 
-export default Post;
+export default Discussion;
